@@ -33,14 +33,28 @@ public:
     void setFileFilters(QStringList filters);
     QMap<QString,FileInfo> getFileSummary();
      void FileSummary();//interface for customer use
+     int getFileNumber()//get how many files
+     {
+         return FileNumber;
+     }
+
+     int getDirNumber()//get how many dirs
+     {
+         return DirNumber;
+     }
+     int getCodeLinesSum()
+     {
+         return codeLinesum;
+     }
 
 private:
     QDir dir;
     QFileInfoList fileinfolist;
     QMap<QString,FileInfo> filesummary;
     void FileSummary(QDir dir);//real logic
-    int FileCounter;
-    int DirCounter;
+    int FileNumber;
+    int DirNumber;
+    int codeLinesum;
 };
 
 #endif // FILECOUNTER_H

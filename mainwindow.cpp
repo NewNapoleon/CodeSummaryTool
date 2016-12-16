@@ -32,7 +32,10 @@ void MainWindow::on_OpenDirectory_clicked()
         ui->CodeSummaryInfo->append(newline);
         resultIt++;
     }
-
+    // set status of FileCounter and DirCounter
+    ui->fileCounter->setText(QString::number(filesat.getFileNumber()));
+    ui->subDirCounter->setText(QString::number(filesat.getDirNumber()));
+    ui->codeLinesNum->setText(QString::number(filesat.getCodeLinesSum()));
 }
 
 

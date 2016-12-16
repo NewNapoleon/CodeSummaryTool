@@ -6,7 +6,9 @@ FileCounter::FileCounter(QString targetpath):dir(targetpath)
 {
     dir.setFilter(QDir::Files|QDir::Dirs|QDir::NoDotAndDotDot);
     fileinfolist = dir.entryInfoList();
-
+    FileNumber = 0;
+    DirNumber = 0;
+    codeLinesum = 0;
 }
 
 void FileCounter::setFileFilters(QStringList filters)
@@ -30,6 +32,7 @@ void FileCounter::FileSummary()
             {
                 QDir tempdir(fileinfo.absoluteFilePath());
                 tempdir.setFilter(QDir::Files|QDir::Dirs|QDir::NoDotAndDotDot);
+                DirNumber++;
                 FileSummary(tempdir);
             }
             else
@@ -52,7 +55,9 @@ void FileCounter::FileSummary()
                         FileRows++;
                     }
                 }
+                codeLinesum+=FileRows;
                 FileInfo info(FileName,FileType,FileRows,FileSize);
+                FileNumber++;
                 filesummary.insert(FileName,info);
             }
         }
@@ -75,6 +80,7 @@ void FileCounter::FileSummary(QDir dir)
            {
                QDir tempdir(tempfile.absoluteFilePath());
                tempdir.setFilter(QDir::Files|QDir::Dirs|QDir::NoDotAndDotDot);
+               DirNumber++;
                FileSummary(tempdir);
            }
            else
@@ -97,7 +103,9 @@ void FileCounter::FileSummary(QDir dir)
                        FileRows++;
                    }
                }
+               codeLinesum+=FileRows;
                FileInfo info(FileName,FileType,FileRows,FileSize);
+               FileNumber++;
                filesummary.insert(FileName,info);
            }
         }
