@@ -15,10 +15,12 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     filecounter.cpp \
-    codecountertablemodel.cpp
+    codecountertablemodel.cpp \
+    codestructuremodel.cpp
 
 HEADERS  += mainwindow.h \
     filecounter.h \
-    codecountertablemodel.h
+    codecountertablemodel.h \
+    codestructuremodel.h
 
 FORMS    += mainwindow.ui

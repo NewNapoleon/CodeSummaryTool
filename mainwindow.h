@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include "filecounter.h"
 #include "codecountertablemodel.h"
+#include "codestructuremodel.h"
+#include <QFileSystemModel>
 
 namespace Ui {
 class MainWindow;

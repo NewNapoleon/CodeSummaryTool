@@ -25,7 +25,17 @@ void MainWindow::on_OpenDirectory_clicked()
     CodeCounterTableModel* myModel = new CodeCounterTableModel(NULL,filesat.getFileSummary());
 
     ui->codeInfoTable->setModel(myModel);
-    ui->codeInfoTable->show();
+//    ui->codeInfoTable->show();
+
+    //code structure view
+    CodeStructureModel* myFileModel = new CodeStructureModel();
+
+     myFileModel->setRootPath(path);
+
+    ui->codeTreeStructure->setModel(myFileModel);
+    ui->codeTreeStructure->setRootIndex(myFileModel->index(path));
+
+//    ui->codeTreeStructure->show();
 
 
     // set status of FileCounter and DirCounter

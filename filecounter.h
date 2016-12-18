@@ -30,11 +30,17 @@ public:
         return fileSize;
     }
 
+    QString getParentDir() const
+    {
+        return parentDir;
+    }
+
 private:
     QString fileName;
     QString fileType;
     int fileRows;
     double fileSize;
+    QString parentDir;//file location
 
 };
 
