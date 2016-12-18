@@ -13,9 +13,21 @@ public:
         //init File Summary info
     }
 
-    int getFileRows()
+    int getFileRows() const
     {
         return fileRows;
+    }
+    QString getFileName() const
+    {
+        return fileName;
+    }
+    QString getFileType() const
+    {
+        return fileType;
+    }
+    double getFileSize() const
+    {
+        return fileSize;
     }
 
 private:

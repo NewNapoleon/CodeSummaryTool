@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "filecounter.h"
+#include "codecountertablemodel.h"
 
 namespace Ui {
 class MainWindow;
@@ -21,6 +22,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
 };
 
 #endif // MAINWINDOW_H
