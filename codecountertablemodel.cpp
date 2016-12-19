@@ -36,10 +36,10 @@ QVariant CodeCounterTableModel::data(const QModelIndex &index, int role) const
             return QVariant(CodeInfo.at(row).getFileName());
             break;
         case 1:
-            return QVariant(CodeInfo.at(row).getFileType());
+            return QVariant(CodeInfo.at(row).getFileRows());
             break;
         case 2:
-            return QVariant(CodeInfo.at(row).getFileRows());
+            return QVariant(CodeInfo.at(row).getFileType());
             break;
         case 3:
             return QVariant(CodeInfo.at(row).getFileSize());
@@ -75,9 +75,9 @@ QVariant CodeCounterTableModel::headerData(int section, Qt::Orientation orientat
             case 0:
                return tr("文件名称");
             case 1:
-                return tr("文件类型");
+                return tr("文件行数(LOC)");
             case 2:
-                return tr("文件行数");
+                return tr("文件类型");
             case 3:
                 return tr("文件大小");
             }

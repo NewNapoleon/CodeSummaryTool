@@ -5,6 +5,7 @@
 #include "filecounter.h"
 #include "codecountertablemodel.h"
 #include "codestructuremodel.h"
+#include "filetypefilterwidget.h"
 #include <QFileSystemModel>
 
 namespace Ui {
@@ -22,8 +23,15 @@ public:
 private slots:
     void on_OpenDirectory_clicked();
 
+    void on_codeSummaryButton_clicked();
+
+
+    void on_fileFilterButton_clicked();
+
 private:
     Ui::MainWindow *ui;
+    QString path;
+    QStringList fileTypeFilter;
 
 };
 

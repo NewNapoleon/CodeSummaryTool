@@ -47,7 +47,7 @@ private:
 class FileCounter
 {
 public:
-    FileCounter(QString targetpath);
+    FileCounter(QString targetpath,QStringList filters);
     void setFileFilters(QStringList filters);
     QMap<QString,FileInfo> getFileSummary();
      void FileSummary();//interface for customer use
@@ -69,6 +69,7 @@ private:
     QDir dir;
     QFileInfoList fileinfolist;
     QMap<QString,FileInfo> filesummary;
+    QStringList fileTypefilters;
     void FileSummary(QDir dir);//real logic
     int FileNumber;
     int DirNumber;

@@ -2,13 +2,14 @@
 #include <QTextStream>
 #include <QDebug>
 
-FileCounter::FileCounter(QString targetpath):dir(targetpath)
+FileCounter::FileCounter(QString targetpath, QStringList filters):dir(targetpath)
 {
     dir.setFilter(QDir::Files|QDir::Dirs|QDir::NoDotAndDotDot);
     fileinfolist = dir.entryInfoList();
     FileNumber = 0;
     DirNumber = 0;
     codeLinesum = 0;
+    fileTypefilters = filters;
 }
 
 void FileCounter::setFileFilters(QStringList filters)
@@ -35,7 +36,7 @@ void FileCounter::FileSummary()
                 DirNumber++;
                 FileSummary(tempdir);
             }
-            else
+            else if(fileTypefilters.contains(fileinfo.suffix()))
             {
                 QString FileName = fileinfo.fileName();
                 QString FileType = fileinfo.suffix();
@@ -83,7 +84,7 @@ void FileCounter::FileSummary(QDir dir)
                DirNumber++;
                FileSummary(tempdir);
            }
-           else
+           else if(fileTypefilters.contains(tempfile.suffix()))
            {
                QString FileName = tempfile.fileName();
                QString FileType = tempfile.suffix();

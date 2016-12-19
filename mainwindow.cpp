@@ -9,6 +9,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    path = "";
+    fileTypeFilter.push_back("h");
+    fileTypeFilter.push_back("cpp");
+    ui->codeSummaryButton->setDisabled(true);
+    ui->codeInfoTable->setSelectionBehavior(QAbstractItemView::SelectRows);
 }
 
 MainWindow::~MainWindow()
@@ -18,24 +23,39 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_OpenDirectory_clicked()
 {
-    QString path = QFileDialog::getExistingDirectory(NULL,tr("open target file directory"),"",QFileDialog::ShowDirsOnly|QFileDialog::DontResolveSymlinks);
-    FileCounter filesat(path);
+    path = QFileDialog::getExistingDirectory(NULL,tr("open target file directory"),"",QFileDialog::ShowDirsOnly|QFileDialog::DontResolveSymlinks);
+    ui->TargetFileDirectory->setText(path);
+    ui->codeSummaryButton->setEnabled(true);
+}
+
+
+
+void MainWindow::on_codeSummaryButton_clicked()
+{
+    FileCounter filesat(path,fileTypeFilter);
     filesat.FileSummary();
 
     CodeCounterTableModel* myModel = new CodeCounterTableModel(NULL,filesat.getFileSummary());
 
     ui->codeInfoTable->setModel(myModel);
-//    ui->codeInfoTable->show();
 
     //code structure view
     CodeStructureModel* myFileModel = new CodeStructureModel();
 
      myFileModel->setRootPath(path);
 
+     QStringList modelFilters;
+     foreach(QString str,fileTypeFilter)
+     {
+         QString typestr = "*.";
+         typestr+=str;
+         modelFilters.push_back(typestr);
+     }
+
+     myFileModel->setNameFilters(modelFilters);
     ui->codeTreeStructure->setModel(myFileModel);
     ui->codeTreeStructure->setRootIndex(myFileModel->index(path));
 
-//    ui->codeTreeStructure->show();
 
 
     // set status of FileCounter and DirCounter
@@ -45,3 +65,15 @@ void MainWindow::on_OpenDirectory_clicked()
 }
 
 
+
+void MainWindow::on_fileFilterButton_clicked()
+{
+    FileTypeFilterWidget* filterWidget = new FileTypeFilterWidget(NULL,&fileTypeFilter);
+    filterWidget->setWindowTitle(tr("目标文件类型"));
+    filterWidget->show();
+}
+
+void MainWindow::on_copyTableButton_clicked()
+{
+
+}
