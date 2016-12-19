@@ -13,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent) :
     fileTypeFilter.push_back("h");
     fileTypeFilter.push_back("cpp");
     ui->codeSummaryButton->setDisabled(true);
-    ui->codeInfoTable->setSelectionBehavior(QAbstractItemView::SelectRows);
 }
 
 MainWindow::~MainWindow()
@@ -73,7 +72,6 @@ void MainWindow::on_fileFilterButton_clicked()
     filterWidget->show();
 }
 
-void MainWindow::on_copyTableButton_clicked()
-{
 
-}
+
+

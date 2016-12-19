@@ -17,13 +17,15 @@ SOURCES += main.cpp\
     filecounter.cpp \
     codecountertablemodel.cpp \
     codestructuremodel.cpp \
-    filetypefilterwidget.cpp
+    filetypefilterwidget.cpp \
+    codecountertableview.cpp
 
 HEADERS  += mainwindow.h \
     filecounter.h \
     codecountertablemodel.h \
     codestructuremodel.h \
-    filetypefilterwidget.h
+    filetypefilterwidget.h \
+    codecountertableview.h
 
 FORMS    += mainwindow.ui \
     filetypefilterwidget.ui

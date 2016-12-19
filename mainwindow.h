@@ -7,6 +7,9 @@
 #include "codestructuremodel.h"
 #include "filetypefilterwidget.h"
 #include <QFileSystemModel>
+#include <QEvent>
+#include <QKeyEvent>
+#include <QClipboard>
 
 namespace Ui {
 class MainWindow;
@@ -20,6 +23,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+
 private slots:
     void on_OpenDirectory_clicked();
 
@@ -27,6 +31,8 @@ private slots:
 
 
     void on_fileFilterButton_clicked();
+
+
 
 private:
     Ui::MainWindow *ui;
